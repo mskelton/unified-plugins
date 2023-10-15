@@ -1,0 +1,13 @@
+{
+  "name": "unified-plugins",
+  "description": "My collection of unified plugins.",
+  "type": "module",
+  "packageManager": "pnpm@8.7.6",
+  "scripts": {
+    "fmt": "prettier --write .",
+    "fmt:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@mskelton/rehype-shiki",
+  "description": "rehype plugin to highlight code blocks with shiki",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mskelton/unified-plugins",
+    "directory": "packages/rehype-shiki"
+  },
+  "author": "Mark Skelton",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "highlight",
+    "rehype",
+    "rehype-plugin",
+    "shiki",
+    "syntax",
+    "syntax-highlighting",
+    "unified"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "exports": "./index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "hast-util-to-text": "^4.0.0",
+    "unist-util-visit": "^5.0.0"
+  },
+  "peerDependencies": {
+    "shiki": ">=0.14.5"
+  }
+}
