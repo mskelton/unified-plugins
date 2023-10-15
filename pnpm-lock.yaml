@@ -24,6 +24,12 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
 
+  packages/remark-extract-frontmatter:
+    dependencies:
+      vfile-matter:
+        specifier: ^5.0.0
+        version: 5.0.0
+
 packages:
 
   /@types/hast@3.0.1:
@@ -87,6 +93,12 @@ packages:
       '@types/unist': 3.0.0
     dev: false
 
+  /unist-util-stringify-position@4.0.0:
+    resolution: {integrity: sha512-0ASV06AAoKCDkS2+xw5RXJywruurpbC4JZSm7nr7MOt1ojAzvyyaO+UxZf18j8FCF6kmzCZKcAgN/yu2gm2XgQ==}
+    dependencies:
+      '@types/unist': 3.0.0
+    dev: false
+
   /unist-util-visit-parents@6.0.1:
     resolution: {integrity: sha512-L/PqWzfTP9lzzEa6CKs0k2nARxTdZduw3zyh8d2NVBnsyvHjSX4TWse388YrrQKbvI8w20fGjGlhgT96WwKykw==}
     dependencies:
@@ -102,10 +114,37 @@ packages:
       unist-util-visit-parents: 6.0.1
     dev: false
 
+  /vfile-matter@5.0.0:
+    resolution: {integrity: sha512-jhPSqlj8hTSkTXOqyxbUeZAFFVq/iwu/jukcApEqc/7DOidaAth6rDc0Zgg0vWpzUnWkwFP7aK28l6nBmxMqdQ==}
+    dependencies:
+      vfile: 6.0.1
+      yaml: 2.3.3
+    dev: false
+
+  /vfile-message@4.0.2:
+    resolution: {integrity: sha512-jRDZ1IMLttGj41KcZvlrYAaI3CfqpLpfpf+Mfig13viT6NKvRzWZ+lXz0Y5D60w6uJIBAOGq9mSHf0gktF0duw==}
+    dependencies:
+      '@types/unist': 3.0.0
+      unist-util-stringify-position: 4.0.0
+    dev: false
+
+  /vfile@6.0.1:
+    resolution: {integrity: sha512-1bYqc7pt6NIADBJ98UiG0Bn/CHIVOoZ/IyEkqIruLg0mE1BKzkOXY2D6CSqQIcKqgadppE5lrxgWXJmXd7zZJw==}
+    dependencies:
+      '@types/unist': 3.0.0
+      unist-util-stringify-position: 4.0.0
+      vfile-message: 4.0.2
+    dev: false
+
   /vscode-oniguruma@1.7.0:
     resolution: {integrity: sha512-L9WMGRfrjOhgHSdOYgCt/yRMsXzLDJSL7BPrOZt73gU0iWO4mpqzqQzOz5srxqTvMBaR0XZTSrVWo4j55Rc6cA==}
     dev: false
 
   /vscode-textmate@8.0.0:
     resolution: {integrity: sha512-AFbieoL7a5LMqcnOF04ji+rpXadgOXnZsxQr//r83kLPr7biP7am3g9zbaZIaBGwBRWeSvoMD4mgPdX3e4NWBg==}
+    dev: false
+
+  /yaml@2.3.3:
+    resolution: {integrity: sha512-zw0VAJxgeZ6+++/su5AFoqBbZbrEakwu+X0M5HmcwUiBL7AzcuPKjj5we4xfQLp78LkEMpD0cOnUhmgOVy3KdQ==}
+    engines: {node: '>= 14'}
     dev: false

@@ -1,0 +1,32 @@
+{
+  "name": "@mskelton/remark-extract-frontmatter",
+  "description": "remark plugin to extract frontmatter into the vfile metadata.",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mskelton/unified-plugins",
+    "directory": "packages/remark-extract-frontmatter"
+  },
+  "author": "Mark Skelton",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "frontmatter",
+    "remark",
+    "remark-plugin",
+    "unified"
+  ],
+  "sideEffects": false,
+  "type": "module",
+  "exports": "./index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "vfile-matter": "^5.0.0"
+  }
+}
