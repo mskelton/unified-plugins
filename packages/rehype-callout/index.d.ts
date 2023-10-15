@@ -2,7 +2,7 @@ import type { Root } from "mdast";
 import type { Plugin } from "unified";
 import type { Node } from "unist";
 
-export type CalloutType = "NOTE" | "WARN" | "ERROR";
+export type CalloutType = "INFO" | "WARN" | "ERROR";
 
 export type ClassValue = string | string[] | null | undefined;
 
@@ -29,7 +29,7 @@ export interface Options<T extends CalloutType = CalloutType> {
   icons?: Partial<Record<T, Node>>;
   /**
    * Allowed types of callouts.
-   * @default ["NOTE", "WARN", "ERROR"]
+   * @default ["INFO", "WARN", "ERROR"]
    */
   types?: T[];
 }
