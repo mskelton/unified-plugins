@@ -1,7 +1,9 @@
 import { SKIP, visit } from "unist-util-visit";
 
 function applyClass(className, type) {
-  return typeof className === "string" ? className : className?.[type];
+  return typeof className === "string"
+    ? className
+    : [className?.default, className?.[type]].flat().filter(Boolean);
 }
 
 export default function rehypeCallout(options) {

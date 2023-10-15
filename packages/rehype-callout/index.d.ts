@@ -1,5 +1,6 @@
 import type { Root } from "mdast";
-import type { Plugin, Node } from "unified";
+import type { Plugin } from "unified";
+import type { Node } from "unist";
 
 export type CalloutType = "NOTE" | "WARN" | "ERROR";
 
@@ -7,7 +8,7 @@ export type ClassValue = string | string[] | null | undefined;
 
 export type CalloutClass<T extends CalloutType> =
   | ClassValue
-  | Partial<Record<T, ClassValue>>;
+  | Partial<Record<T | "default", ClassValue>>;
 
 export interface Options<T extends CalloutType = CalloutType> {
   /**
