@@ -24,6 +24,10 @@ export interface Options<T extends CalloutType = CalloutType> {
    */
   contentClass?: CalloutClass<T>;
   /**
+   * Custom class name for the icon element.
+   */
+  iconClass?: CalloutClass<T>;
+  /**
    * Icons for the callout.
    */
   icons?: Partial<Record<T, Node>>;

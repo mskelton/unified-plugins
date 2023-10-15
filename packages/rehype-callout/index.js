@@ -36,7 +36,7 @@ export default function rehypeCallout(options) {
               ...icon,
               properties: {
                 ...icon.properties,
-                class: applyClass(options?.class, type),
+                class: applyClass(options?.iconClass, type),
               },
             },
             {
@@ -57,7 +57,7 @@ export default function rehypeCallout(options) {
             },
           ].filter(Boolean),
           properties: {
-            class: options?.class,
+            class: applyClass(options?.class, type),
           },
         });
 
