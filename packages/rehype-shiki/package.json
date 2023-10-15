@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mskelton/unified-plugins",
+    "url": "git+https://github.com/mskelton/unified-plugins.git",
     "directory": "packages/rehype-shiki"
   },
   "author": "Mark Skelton",
@@ -29,6 +29,7 @@
     "index.js",
     "index.d.ts"
   ],
+  "scripts": {},
   "dependencies": {
     "hast-util-to-text": "^4.0.0",
     "unist-util-visit": "^5.0.0"
