@@ -1,9 +1,9 @@
 import { SKIP, visit } from "unist-util-visit";
 
-function applyClass(className, type) {
+function applyClass(base, className, type) {
   return typeof className === "string"
-    ? className
-    : [className?.default, className?.[type]].flat().filter(Boolean);
+    ? [base, className]
+    : [base, className?.default, className?.[type]].flat().filter(Boolean);
 }
 
 export default function rehypeCallout(options) {
@@ -36,14 +36,14 @@ export default function rehypeCallout(options) {
               ...icon,
               properties: {
                 ...icon.properties,
-                class: applyClass(options?.iconClass, type),
+                class: applyClass("icon", options?.iconClass, type),
               },
             },
             {
               type: "element",
               tagName: "strong",
               properties: {
-                class: applyClass(options?.titleClass, type),
+                class: applyClass("title", options?.titleClass, type),
               },
               children: [{ type: "text", value: title || type }],
             },
@@ -51,13 +51,13 @@ export default function rehypeCallout(options) {
               type: "element",
               tagName: "div",
               properties: {
-                class: applyClass(options?.contentClass, type),
+                class: applyClass("content", options?.contentClass, type),
               },
               children: children.slice(2),
             },
           ].filter(Boolean),
           properties: {
-            class: applyClass(options?.class, type),
+            class: applyClass("callout", options?.class, type),
           },
         });
 

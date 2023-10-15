@@ -1,7 +1,7 @@
 {
   "name": "@mskelton/rehype-callout",
   "description": "rehype plugin to create callout blocks",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mskelton/unified-plugins.git",
