@@ -12,6 +12,12 @@ importers:
         specifier: ^3.0.3
         version: 3.0.3
 
+  packages/rehype-callout:
+    dependencies:
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
+
   packages/rehype-shiki:
     dependencies:
       hast-util-to-text:

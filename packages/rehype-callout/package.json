@@ -1,11 +1,11 @@
 {
-  "name": "@mskelton/remark-extract-frontmatter",
-  "description": "remark plugin to extract frontmatter into the vfile metadata.",
-  "version": "0.0.2",
+  "name": "@mskelton/rehype-callout",
+  "description": "rehype plugin to create callout blocks",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mskelton/unified-plugins.git",
-    "directory": "packages/remark-extract-frontmatter"
+    "directory": "packages/rehype-callout"
   },
   "author": "Mark Skelton",
   "license": "ISC",
@@ -13,9 +13,9 @@
     "access": "public"
   },
   "keywords": [
-    "frontmatter",
-    "remark",
-    "remark-plugin",
+    "rehype",
+    "rehype-plugin",
+    "callout",
     "unified"
   ],
   "sideEffects": false,
@@ -28,6 +28,6 @@
   ],
   "scripts": {},
   "dependencies": {
-    "vfile-matter": "^5.0.0"
+    "unist-util-visit": "^5.0.0"
   }
 }
