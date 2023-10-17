@@ -1,11 +1,13 @@
 {
   "name": "unified-plugins",
   "description": "My collection of unified plugins.",
+  "private": true,
   "type": "module",
   "packageManager": "pnpm@8.7.6",
   "scripts": {
     "fmt": "prettier --write .",
-    "fmt:check": "prettier --check ."
+    "fmt:check": "prettier --check .",
+    "release": "pnpm publish --recursive"
   },
   "devDependencies": {
     "prettier": "^3.0.3"
