@@ -10,23 +10,18 @@ export default function rehypeShiki({ highlighter }) {
           node.tagName === "pre" &&
           Array.isArray(node.children) &&
           node.children.length === 1 &&
-          node.children[0].tagName === "code" &&
-          typeof node.children[0].properties === "object" &&
-          node.children[0].properties !== null &&
-          Array.isArray(node.children[0].properties.className) &&
-          typeof node.children[0].properties.className[0] === "string" &&
-          node.children[0].properties.className[0].startsWith("language-")
+          node.children[0].tagName === "code"
         );
       },
       (node) => {
         const source = toText(node).slice(0, -1);
-        const language = node.children[0].properties.className[0]
-          .split("language-")
+        const language = node.children[0].properties?.className?.[0]
+          ?.split("language-")
           .at(-1);
 
         let output = [];
         try {
-          output = highlighter.codeToThemedTokens(source, language);
+          output = highlighter.codeToThemedTokens(source, language ?? "text");
         } catch (error) {
           return;
         }
