@@ -21,7 +21,9 @@ export default function rehypeShiki({ highlighter }) {
 
         let output = [];
         try {
-          output = highlighter.codeToThemedTokens(source, language ?? "text");
+          output = highlighter.codeToThemedTokens(source, {
+            lang: language ?? "text",
+          });
         } catch (error) {
           return;
         }
