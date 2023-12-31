@@ -1,14 +1,14 @@
-import { SKIP, visit } from "unist-util-visit";
+import { SKIP, visit } from "unist-util-visit"
 
 function applyClass(base, className, type) {
   return typeof className === "string"
     ? [base, className]
-    : [base, className?.default, className?.[type]].flat().filter(Boolean);
+    : [base, className?.default, className?.[type]].flat().filter(Boolean)
 }
 
 export default function rehypeCallout(options) {
-  const types = options?.types ?? ["INFO", "WARN", "ERROR"];
-  const regex = new RegExp(`\\[!(${types.join("|")})(\\s.*)?\\]`);
+  const types = options?.types ?? ["INFO", "WARN", "ERROR"]
+  const regex = new RegExp(`\\[!(${types.join("|")})(\\s.*)?\\]`)
 
   return (tree) =>
     visit(
@@ -17,16 +17,16 @@ export default function rehypeCallout(options) {
       (node, index, parent) => {
         const children = node.children
           .filter((child) => child.type === "element")
-          .flatMap((child) => child.children);
+          .flatMap((child) => child.children)
 
-        const [first] = children;
-        const match = first?.type === "text" ? first.value.match(regex) : null;
+        const [first] = children
+        const match = first?.type === "text" ? first.value.match(regex) : null
         if (!match) {
-          return;
+          return
         }
 
-        const [_, type, title] = match;
-        const icon = options?.icons?.[type];
+        const [_, type, title] = match
+        const icon = options?.icons?.[type]
 
         parent.children.splice(index, 1, {
           type: "element",
@@ -59,9 +59,9 @@ export default function rehypeCallout(options) {
           properties: {
             class: applyClass("callout", options?.class, type),
           },
-        });
+        })
 
-        return SKIP;
+        return SKIP
       },
-    );
+    )
 }

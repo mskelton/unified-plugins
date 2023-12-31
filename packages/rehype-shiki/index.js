@@ -1,7 +1,15 @@
-import { toText } from "hast-util-to-text";
-import { SKIP, visit } from "unist-util-visit";
+import { toText } from "hast-util-to-text"
+import { SKIP, visit } from "unist-util-visit"
 
 export default function rehypeShiki({ highlighter, themes }) {
+  const highlight = (source, lang) => {
+    try {
+      return highlighter.codeToHast(source, { lang, themes })
+    } catch {
+      return
+    }
+  }
+
   return (ast) => {
     visit(
       ast,
@@ -11,48 +19,26 @@ export default function rehypeShiki({ highlighter, themes }) {
           Array.isArray(node.children) &&
           node.children.length === 1 &&
           node.children[0].tagName === "code"
-        );
+        )
       },
-      (node) => {
-        const source = toText(node).slice(0, -1);
+      (node, index, parent) => {
+        const source = toText(node).slice(0, -1)
         const language = node.children[0].properties?.className?.[0]
           ?.split("language-")
-          .at(-1);
+          .at(-1)
 
-        let output = [];
-        try {
-          output = highlighter.codeToThemedTokens(source, {
-            lang: language ?? "text",
-            themes,
-          });
-        } catch (error) {
-          return;
+        let output =
+          highlight(source, language ?? "text") ?? highlight(source, "text")
+
+        if (output) {
+          parent.children[index] = output.children[0]
+
+          // Copy any metadata from the original node to the new node
+          parent.children[index].data = node.data
         }
 
-        // Add properties to the pre tag
-        node.properties ??= {};
-        node.properties.className ??= [];
-        node.properties.className.push("shiki");
-
-        const code = node.children[0];
-        code.children = output.map((line) => ({
-          type: "element",
-          tagName: "span",
-          properties: {
-            className: ["line"],
-          },
-          children: line.map((token) => ({
-            type: "element",
-            tagName: "span",
-            properties: {
-              style: `color: ${token.color};`,
-            },
-            children: [{ type: "text", value: token.content }],
-          })),
-        }));
-
-        return SKIP;
+        return SKIP
       },
-    );
-  };
+    )
+  }
 }

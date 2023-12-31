@@ -1,5 +1,5 @@
-import type { Root } from "mdast";
-import type { Plugin } from "unified";
+import type { Root } from "mdast"
+import type { Plugin } from "unified"
 
-declare const remarkExtractFrontmatter: Plugin<unknown[], Root, string>;
-export default remarkExtractFrontmatter;
+declare const remarkExtractFrontmatter: Plugin<unknown[], Root, string>
+export default remarkExtractFrontmatter

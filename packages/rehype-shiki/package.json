@@ -1,7 +1,7 @@
 {
   "name": "@mskelton/rehype-shiki",
   "description": "rehype plugin to highlight code blocks with shiki",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mskelton/unified-plugins.git",
