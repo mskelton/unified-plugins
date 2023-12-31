@@ -1,7 +1,7 @@
 import { toText } from "hast-util-to-text";
 import { SKIP, visit } from "unist-util-visit";
 
-export default function rehypeShiki({ highlighter }) {
+export default function rehypeShiki({ highlighter, themes }) {
   return (ast) => {
     visit(
       ast,
@@ -23,6 +23,7 @@ export default function rehypeShiki({ highlighter }) {
         try {
           output = highlighter.codeToThemedTokens(source, {
             lang: language ?? "text",
+            themes,
           });
         } catch (error) {
           return;
