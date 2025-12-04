@@ -1,7 +1,10 @@
 import { toText } from "hast-util-to-text"
 import { SKIP, visit } from "unist-util-visit"
+import { createHighlighter } from "shiki"
 
-export default function rehypeShiki({ highlighter, themes }) {
+export default function rehypeShiki({ themes, ...options }) {
+  const highlighter = createHighlighter({ themes, ...options })
+
   const highlight = (source, lang) => {
     try {
       return highlighter.codeToHast(source, { lang, themes })

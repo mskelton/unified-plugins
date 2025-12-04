@@ -35,6 +35,6 @@
     "unist-util-visit": "^5.0.0"
   },
   "peerDependencies": {
-    "shiki": ">=1.0.0-beta.2"
+    "shiki": ">=3.0.0"
   }
 }
