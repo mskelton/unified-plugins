@@ -1,19 +1,23 @@
 import { toText } from "hast-util-to-text"
+import { getSingletonHighlighter } from "shiki"
 import { SKIP, visit } from "unist-util-visit"
-import { createHighlighter } from "shiki"
 
-export default function rehypeShiki({ themes, ...options }) {
-  const highlighter = createHighlighter({ themes, ...options })
+export default function rehypeShiki({ highlighterOptions, codeToHastOptions }) {
+  let highlighter
 
-  const highlight = (source, lang) => {
-    try {
-      return highlighter.codeToHast(source, { lang, themes })
-    } catch {
-      return
+  return async (ast) => {
+    if (!highlighter) {
+      highlighter = await getSingletonHighlighter(highlighterOptions)
     }
-  }
 
-  return (ast) => {
+    function highlight(source, lang) {
+      try {
+        return highlighter.codeToHast(source, { lang, ...codeToHastOptions })
+      } catch {
+        return null
+      }
+    }
+
     visit(
       ast,
       (node) => {
